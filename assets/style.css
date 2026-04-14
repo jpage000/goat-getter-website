@@ -117,7 +117,7 @@ a:hover { color: var(--gg-navy); }
     box-shadow: 0 2px 20px rgba(27,37,71,.08);
 }
 .gg-nav-inner { display: flex; align-items: center; justify-content: space-between; }
-.gg-logo-img { height: 68px; width: auto; }
+.gg-logo-img { height: 68px; width: auto; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
 .gg-nav-links { display: flex; align-items: center; gap: 32px; }
 .gg-nav-links a { color: var(--gg-text-dim); font-size: 0.9rem; font-weight: 500; transition: color .2s; }
 .gg-nav-links a:hover { color: var(--gg-heading); }
@@ -145,7 +145,7 @@ a:hover { color: var(--gg-navy); }
 /* ── Hero ────────────────────────────────────────────────────────── */
 .gg-hero {
     position: relative; padding: 140px 0 80px; overflow: hidden;
-    min-height: 85vh; display: flex; align-items: center;
+    display: flex; align-items: center;
     background: linear-gradient(180deg, var(--gg-bg-alt) 0%, var(--gg-bg) 100%);
 }
 .gg-hero-bg {
@@ -186,9 +186,10 @@ a:hover { color: var(--gg-navy); }
 }
 .gg-hero-screenshot {
     position: relative; z-index: 1; width: 100%; max-width: 540px;
-    height: auto; object-fit: contain;
+    height: auto !important; object-fit: contain !important;
     border-radius: var(--gg-radius); box-shadow: var(--gg-card-hover);
     border: 1px solid var(--gg-border);
+    aspect-ratio: 1200 / 787;
 }
 
 @media (max-width: 900px) {

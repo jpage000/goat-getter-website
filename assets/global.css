@@ -247,6 +247,3 @@ a:hover { color: var(--gg-navy); }
     .gg-footer-inner { grid-template-columns: 1fr; }
 }
 
-/* ── Hide Elementor header/footer templates if they leak through── */
-.elementor-location-header,
-.elementor-location-footer { display: none !important; }
