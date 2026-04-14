@@ -7,8 +7,8 @@
  * templates apply automatically. Only the body content is custom.
  *
  * Assign this template to a page, then set that page as the static front page.
- * SFTP to wp-content/themes/<active-theme>/page-goat-getter-home.php
- * Assets go to wp-content/themes/<active-theme>/goat-getter-assets/
+ * SFTP to wp-content/themes/hello-elementor/page-goat-getter-home.php
+ * Assets go to wp-content/themes/hello-elementor/goat-getter-assets/
  */
 if (!defined('ABSPATH')) exit;
 
