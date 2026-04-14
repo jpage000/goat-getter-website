@@ -198,32 +198,32 @@ echo "▸ PHP Template Checks"
 
 PHP="$ROOT_DIR/page-goat-getter-home.php"
 
-# Uses get_header()
-if grep -q 'get_header()' "$PHP"; then
-    pass "PHP uses get_header()"
+# Standalone: has its own <!DOCTYPE html>
+if grep -q '<!DOCTYPE html>' "$PHP"; then
+    pass "PHP has standalone <!DOCTYPE html>"
 else
-    fail "PHP missing get_header()"
+    fail "PHP missing standalone <!DOCTYPE html>"
 fi
 
-# Uses get_footer()
-if grep -q 'get_footer()' "$PHP"; then
-    pass "PHP uses get_footer()"
+# Standalone: has its own </html>
+if grep -q '</html>' "$PHP"; then
+    pass "PHP has closing </html>"
 else
-    fail "PHP missing get_footer()"
+    fail "PHP missing closing </html>"
 fi
 
-# Enqueues CSS
-if grep -q 'wp_enqueue_style' "$PHP"; then
-    pass "PHP enqueues CSS properly"
+# Loads CSS directly
+if grep -q 'style.css' "$PHP"; then
+    pass "PHP loads CSS directly"
 else
-    fail "PHP not enqueuing CSS"
+    fail "PHP not loading CSS"
 fi
 
-# Enqueues JS
-if grep -q 'wp_enqueue_script' "$PHP"; then
-    pass "PHP enqueues JS properly"
+# Loads JS directly
+if grep -q 'app.js' "$PHP"; then
+    pass "PHP loads JS directly"
 else
-    fail "PHP not enqueuing JS"
+    fail "PHP not loading JS"
 fi
 
 # Template Name header

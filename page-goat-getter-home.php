@@ -1,48 +1,55 @@
 <?php
 /**
  * Template Name: Goat Getter Home
- * Description: Premium landing page for the Goat Getter plugin ecosystem.
+ * Description: Standalone premium landing page — bypasses Elementor/WooCommerce
+ *              frontend for maximum speed. Includes its own nav and footer.
  *
- * Uses get_header() / get_footer() so Elementor Theme Builder header/footer
- * templates apply automatically. Only the body content is custom.
- *
- * Assign this template to a page, then set that page as the static front page.
  * SFTP to wp-content/themes/hello-elementor/page-goat-getter-home.php
  * Assets go to wp-content/themes/hello-elementor/goat-getter-assets/
  */
 if (!defined('ABSPATH')) exit;
-
-// Enqueue our custom assets
-add_action('wp_enqueue_scripts', function() {
-    $theme_url = get_template_directory_uri();
-    wp_enqueue_style(
-        'goat-getter-home',
-        $theme_url . '/goat-getter-assets/style.css',
-        [],
-        '1.0.0'
-    );
-    wp_enqueue_script(
-        'goat-getter-home-js',
-        $theme_url . '/goat-getter-assets/app.js',
-        [],
-        '1.0.0',
-        true
-    );
-    // Google Fonts
-    wp_enqueue_style(
-        'goat-getter-fonts',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap',
-        [],
-        null
-    );
-}, 20);
-
-$theme_url = get_template_directory_uri();
-
-get_header();
+$t = get_template_directory_uri() . '/goat-getter-assets';
 ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Goat Getter builds powerful WordPress plugins for the Gravity Forms ecosystem — visual pipelines, Google Chat notifications, AMS integrations, and more.">
+    <title>Goat Getter — Powerful Plugins for Gravity Forms</title>
+    <link rel="icon" type="image/png" href="<?php echo $t; ?>/Goat Logo Favicon 512x512.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $t; ?>/style.css">
+</head>
+<body class="gg-body">
 
-<div class="gg-body">
+    <!-- ═══════════ NAVIGATION ═══════════ -->
+    <nav class="gg-nav" id="gg-nav">
+        <div class="gg-container gg-nav-inner">
+            <a href="/" class="gg-logo" aria-label="Goat Getter Home">
+                <img src="<?php echo $t; ?>/Goat Logo Horizontal.png" alt="Goat Getter" class="gg-logo-img">
+            </a>
+            <div class="gg-nav-links">
+                <a href="#plugins">Plugins</a>
+                <a href="#why">Why Goat Getter</a>
+                <a href="#coming-soon">Coming Soon</a>
+                <a href="<?php echo home_url('/my-account/'); ?>" class="gg-btn gg-btn-sm gg-btn-outline">My Account</a>
+            </div>
+            <button class="gg-hamburger" id="gg-hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════ MOBILE DRAWER ═══════════ -->
+    <div class="gg-drawer" id="gg-drawer">
+        <a href="#plugins">Plugins</a>
+        <a href="#why">Why Goat Getter</a>
+        <a href="#coming-soon">Coming Soon</a>
+        <a href="<?php echo home_url('/my-account/'); ?>" class="gg-btn gg-btn-outline gg-btn-block">My Account</a>
+    </div>
 
     <!-- ═══════════ HERO ═══════════ -->
     <section class="gg-hero">
@@ -66,7 +73,7 @@ get_header();
             </div>
             <div class="gg-hero-visual">
                 <div class="gg-hero-glow"></div>
-                <img src="<?php echo $theme_url; ?>/goat-getter-assets/hero-pipeline.png" alt="Gravity Pipeline board" class="gg-hero-screenshot" loading="eager">
+                <img src="<?php echo $t; ?>/hero-pipeline.png" alt="Gravity Pipeline board" class="gg-hero-screenshot" loading="eager">
             </div>
         </div>
     </section>
@@ -84,7 +91,7 @@ get_header();
                 <!-- Gravity Pipeline Free -->
                 <div class="gg-plugin-card">
                     <div class="gg-plugin-icon gg-icon-pipeline">
-                        <img src="<?php echo $theme_url; ?>/goat-getter-assets/gp-logo.svg" alt="Gravity Pipeline" style="width:32px; height:32px;">
+                        <img src="<?php echo $t; ?>/gp-logo.svg" alt="Gravity Pipeline" style="width:32px; height:32px;">
                     </div>
                     <h3>Gravity Pipeline <span style="font-weight:500; color: var(--gg-text-dim);">Free</span></h3>
                     <p class="gg-plugin-tagline">Visual Kanban for Gravity Forms</p>
@@ -110,7 +117,7 @@ get_header();
                 <div class="gg-plugin-card gg-card-pro">
                     <div class="gg-plugin-badge">Most Popular</div>
                     <div class="gg-plugin-icon gg-icon-pipeline">
-                        <img src="<?php echo $theme_url; ?>/goat-getter-assets/gp-logo.svg" alt="Gravity Pipeline Pro" style="width:32px; height:32px;">
+                        <img src="<?php echo $t; ?>/gp-logo.svg" alt="Gravity Pipeline Pro" style="width:32px; height:32px;">
                     </div>
                     <h3>Gravity Pipeline <span style="font-weight:500; color: var(--gg-purple);">Pro</span></h3>
                     <p class="gg-plugin-tagline">Everything in Free, plus:</p>
@@ -146,48 +153,12 @@ get_header();
                 <p>We don't just use Gravity Forms — we build our businesses on it. Every plugin solves a real problem we've faced.</p>
             </div>
             <div class="gg-features-grid">
-                <div class="gg-feature-card">
-                    <div class="gg-feature-icon" style="color: #7c3aed;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M4 6h16M4 12h10M4 18h14"/><circle cx="20" cy="12" r="2"/></svg>
-                    </div>
-                    <h4>Ecosystem Architecture</h4>
-                    <p>Gravity Pipeline is the foundation. Add-ons like Gravity AMS and Gravity Reports extend it with specialized features — no bloat, buy what you need.</p>
-                </div>
-                <div class="gg-feature-card">
-                    <div class="gg-feature-icon" style="color: #059669;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                    </div>
-                    <h4>Secure Licensing</h4>
-                    <p>Simple license key activation. Manage all your sites from one dashboard. Automatic updates.</p>
-                </div>
-                <div class="gg-feature-card">
-                    <div class="gg-feature-icon" style="color: #e11d48;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    </div>
-                    <h4>Actively Developed</h4>
-                    <p>Frequent updates, new features, and responsive support. We ship fast and fix faster.</p>
-                </div>
-                <div class="gg-feature-card">
-                    <div class="gg-feature-icon" style="color: #f59e0b;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/><path d="M14.5 4l-5 16"/></svg>
-                    </div>
-                    <h4>Developer-Friendly</h4>
-                    <p>Clean code, WordPress hooks, REST API support. Extend and customize to your heart's content.</p>
-                </div>
-                <div class="gg-feature-card">
-                    <div class="gg-feature-icon" style="color: #3b82f6;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg>
-                    </div>
-                    <h4>Generous Free Tiers</h4>
-                    <p>Every plugin starts with a fully functional free version. Only upgrade when you need Pro features.</p>
-                </div>
-                <div class="gg-feature-card">
-                    <div class="gg-feature-icon" style="color: #10b981;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
-                    <h4>Direct Support</h4>
-                    <p>Reach a developer — not a ticket queue. We respond within 24 hours, usually much faster.</p>
-                </div>
+                <div class="gg-feature-card"><div class="gg-feature-icon" style="color:#7c3aed;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M4 6h16M4 12h10M4 18h14"/><circle cx="20" cy="12" r="2"/></svg></div><h4>Ecosystem Architecture</h4><p>Gravity Pipeline is the foundation. Add-ons like Gravity AMS and Gravity Reports extend it — no bloat, buy what you need.</p></div>
+                <div class="gg-feature-card"><div class="gg-feature-icon" style="color:#059669;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><h4>Secure Licensing</h4><p>Simple license key activation. Manage all your sites from one dashboard. Automatic updates.</p></div>
+                <div class="gg-feature-card"><div class="gg-feature-icon" style="color:#e11d48;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h4>Actively Developed</h4><p>Frequent updates, new features, and responsive support. We ship fast and fix faster.</p></div>
+                <div class="gg-feature-card"><div class="gg-feature-icon" style="color:#f59e0b;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/><path d="M14.5 4l-5 16"/></svg></div><h4>Developer-Friendly</h4><p>Clean code, WordPress hooks, REST API support. Extend and customize to your heart's content.</p></div>
+                <div class="gg-feature-card"><div class="gg-feature-icon" style="color:#3b82f6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg></div><h4>Generous Free Tiers</h4><p>Every plugin starts with a fully functional free version. Only upgrade when you need Pro features.</p></div>
+                <div class="gg-feature-card"><div class="gg-feature-icon" style="color:#10b981;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h4>Direct Support</h4><p>Reach a developer — not a ticket queue. We respond within 24 hours, usually much faster.</p></div>
             </div>
         </div>
     </section>
@@ -201,32 +172,9 @@ get_header();
                 <p>We're building out the full toolkit. These plugins are in active development.</p>
             </div>
             <div class="gg-coming-grid">
-                <div class="gg-coming-card">
-                    <div class="gg-coming-icon" style="color: #3b82f6;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                    </div>
-                    <div class="gg-coming-badge">Coming Soon</div>
-                    <h4>Gravity Chat</h4>
-                    <p>Send rich Google Chat card notifications to any Space or DM when a Gravity Forms entry is submitted. Free for 1 feed, Pro for unlimited feeds per form.</p>
-                </div>
-                <div class="gg-coming-card">
-                    <div class="gg-coming-icon" style="color: #10b981;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M12 11v6M9 14h6"/></svg>
-                    </div>
-                    <div class="gg-coming-badge">Coming Soon</div>
-                    <h4>Gravity AMS</h4>
-                    <p>Bidirectional sync between Gravity Pipeline and your Agency Management System. Push entries to NowCerts, pull policy data back — automatically.</p>
-                    <span class="gg-coming-req">Requires Gravity Pipeline / Pro</span>
-                </div>
-                <div class="gg-coming-card">
-                    <div class="gg-coming-icon" style="color: #f59e0b;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
-                    </div>
-                    <div class="gg-coming-badge">Coming Soon</div>
-                    <h4>Gravity Reports</h4>
-                    <p>Visual analytics and reporting dashboards for your Gravity Forms data. Charts, exports, and scheduled reports — no spreadsheets.</p>
-                    <span class="gg-coming-req">Requires Gravity Pipeline</span>
-                </div>
+                <div class="gg-coming-card"><div class="gg-coming-icon" style="color:#3b82f6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="gg-coming-badge">Coming Soon</div><h4>Gravity Chat</h4><p>Send rich Google Chat card notifications to any Space or DM when a Gravity Forms entry is submitted. Free for 1 feed, Pro for unlimited feeds per form.</p></div>
+                <div class="gg-coming-card"><div class="gg-coming-icon" style="color:#10b981;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M12 11v6M9 14h6"/></svg></div><div class="gg-coming-badge">Coming Soon</div><h4>Gravity AMS</h4><p>Bidirectional sync between Gravity Pipeline and your Agency Management System. Push entries to NowCerts, pull policy data back — automatically.</p><span class="gg-coming-req">Requires Gravity Pipeline / Pro</span></div>
+                <div class="gg-coming-card"><div class="gg-coming-icon" style="color:#f59e0b;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div><div class="gg-coming-badge">Coming Soon</div><h4>Gravity Reports</h4><p>Visual analytics and reporting dashboards for your Gravity Forms data. Charts, exports, and scheduled reports — no spreadsheets.</p><span class="gg-coming-req">Requires Gravity Pipeline</span></div>
             </div>
             <div class="gg-coming-cta">
                 <p>Want early access? <a href="mailto:hello@goat-getter.com">Drop us a line</a> — we'll notify you when each plugin launches.</p>
@@ -246,6 +194,37 @@ get_header();
         </div>
     </section>
 
-</div>
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="gg-footer">
+        <div class="gg-container gg-footer-inner">
+            <div class="gg-footer-brand">
+                <img src="<?php echo $t; ?>/Goat Logo horizontal white.png" alt="Goat Getter" class="gg-footer-logo">
+                <p>Powerful plugins for the Gravity Forms ecosystem.</p>
+            </div>
+            <div class="gg-footer-col">
+                <h5>Plugins</h5>
+                <a href="https://gravitypipeline.io">Gravity Pipeline</a>
+            </div>
+            <div class="gg-footer-col">
+                <h5>Account</h5>
+                <a href="<?php echo home_url('/my-account/'); ?>">My Account</a>
+                <a href="<?php echo home_url('/my-account/orders/'); ?>">Orders</a>
+                <a href="<?php echo home_url('/my-account/downloads/'); ?>">Downloads</a>
+            </div>
+            <div class="gg-footer-col">
+                <h5>Company</h5>
+                <a href="mailto:hello@goat-getter.com">Contact</a>
+                <a href="<?php echo home_url('/terms/'); ?>">Terms</a>
+                <a href="<?php echo home_url('/privacy/'); ?>">Privacy</a>
+            </div>
+        </div>
+        <div class="gg-footer-bottom">
+            <div class="gg-container">
+                <p>&copy; <?php echo date('Y'); ?> Goat Getter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-<?php get_footer(); ?>
+    <script src="<?php echo $t; ?>/app.js"></script>
+</body>
+</html>
