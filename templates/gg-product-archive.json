@@ -1,0 +1,84 @@
+{
+  "content": [
+    {
+      "id": "gg_pa_s0",
+      "elType": "section",
+      "settings": {
+        "structure": "10",
+        "content_width": {"unit":"px","size":1200},
+        "padding": {"unit":"px","top":"120","right":"30","bottom":"20","left":"30","isLinked":false}
+      },
+      "elements": [
+        {
+          "id": "gg_pa_c0",
+          "elType": "column",
+          "settings": {"_column_size":100},
+          "elements": [
+            {
+              "id": "gg_pa_w0",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<style>\n@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');\nbody{font-family:'Inter',sans-serif !important;}\n.woocommerce ul.products li.product{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:20px;box-shadow:0 2px 16px rgba(27,37,71,.08);transition:transform .3s,box-shadow .3s;}\n.woocommerce ul.products li.product:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(27,37,71,.14);}\n.woocommerce ul.products li.product .woocommerce-loop-product__title{color:#1B2547;font-family:'Inter',sans-serif;font-weight:700;}\n.woocommerce ul.products li.product .price{color:#1B2547 !important;font-weight:700;}\n.woocommerce #respond input#submit,.woocommerce a.button,.woocommerce button.button,.woocommerce input.button{background:linear-gradient(135deg,#7c3aed,#6d28d9) !important;color:#fff !important;border:none !important;border-radius:50px !important;padding:10px 22px !important;font-family:'Inter',sans-serif !important;font-weight:600 !important;box-shadow:0 4px 20px rgba(124,58,237,.25) !important;}\n.woocommerce #respond input#submit:hover,.woocommerce a.button:hover,.woocommerce button.button:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.35) !important;}\n</style>"
+              }
+            },
+            {
+              "id": "gg_pa_w1",
+              "elType": "widget",
+              "widgetType": "archive-title",
+              "settings": {
+                "header_size": "h1",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_weight": "800",
+                "typography_font_size": {"unit":"px","size":36,"sizes":[]},
+                "title_color": "#1B2547",
+                "_padding": {"unit":"px","top":"0","right":"0","bottom":"8","left":"0","isLinked":false}
+              }
+            },
+            {
+              "id": "gg_pa_w2",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<p style=\"font-family:'Inter',sans-serif;color:#64748b;font-size:1.05rem;margin-bottom:32px;\">Browse our collection of Gravity Forms plugins.</p>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gg_pa_s1",
+      "elType": "section",
+      "settings": {
+        "structure": "10",
+        "content_width": {"unit":"px","size":1200},
+        "padding": {"unit":"px","top":"0","right":"30","bottom":"80","left":"30","isLinked":false}
+      },
+      "elements": [
+        {
+          "id": "gg_pa_c1",
+          "elType": "column",
+          "settings": {"_column_size":100},
+          "elements": [
+            {
+              "id": "gg_pa_w3",
+              "elType": "widget",
+              "widgetType": "wc-archive-products",
+              "settings": {
+                "columns": 3,
+                "rows": 6,
+                "paginate": "yes"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {},
+  "version": "0.4",
+  "title": "GG Product Archive",
+  "type": "archive"
+}

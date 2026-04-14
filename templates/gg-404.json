@@ -1,0 +1,37 @@
+{
+  "content": [
+    {
+      "id": "gg_404_s1",
+      "elType": "section",
+      "settings": {
+        "structure": "10",
+        "min_height": {"unit":"vh","size":70},
+        "flex_align_items": "center",
+        "flex_justify_content": "center",
+        "content_width": {"unit":"px","size":700},
+        "padding": {"unit":"px","top":"120","right":"30","bottom":"80","left":"30","isLinked":false}
+      },
+      "elements": [
+        {
+          "id": "gg_404_c1",
+          "elType": "column",
+          "settings": {"_column_size":100},
+          "elements": [
+            {
+              "id": "gg_404_w1",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<style>\n@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');\n</style>\n<div style=\"text-align:center;font-family:'Inter',sans-serif;\">\n  <div style=\"font-size:8rem;font-weight:900;color:#1B2547;line-height:1;margin-bottom:16px;letter-spacing:-0.04em;\">404</div>\n  <h1 style=\"font-size:2rem;font-weight:800;color:#1B2547;margin:0 0 12px;\">Page Not Found</h1>\n  <p style=\"color:#64748b;font-size:1.1rem;max-width:480px;margin:0 auto 32px;line-height:1.6;\">The page you're looking for doesn't exist or has been moved.</p>\n  <div style=\"display:flex;gap:14px;justify-content:center;flex-wrap:wrap;\">\n    <a href=\"/\" style=\"display:inline-flex;align-items:center;padding:14px 32px;border-radius:50px;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;font-weight:600;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.25);transition:all .25s;\">← Back to Home</a>\n    <a href=\"/shop/\" style=\"display:inline-flex;align-items:center;padding:14px 32px;border-radius:50px;background:transparent;color:#7c3aed;font-weight:600;text-decoration:none;border:1.5px solid #e5e7eb;transition:all .25s;\">Browse Plugins</a>\n  </div>\n</div>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {},
+  "version": "0.4",
+  "title": "GG 404",
+  "type": "error-404"
+}

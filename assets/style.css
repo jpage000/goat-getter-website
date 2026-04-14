@@ -108,12 +108,13 @@ a:hover { color: var(--gg-navy); }
 /* ── Navigation ─────────────────────────────────────────────────── */
 .gg-nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 16px 0;
-    transition: background .3s, padding .3s, box-shadow .3s;
+    width: 100%; padding: 10px 0;
+    background: rgba(255,255,255,.97); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(27,37,71,.08);
+    transition: box-shadow .3s;
 }
 .gg-nav.scrolled {
-    background: rgba(255,255,255,.92); backdrop-filter: blur(16px);
-    padding: 10px 0; box-shadow: 0 2px 20px rgba(27,37,71,.08);
+    box-shadow: 0 2px 20px rgba(27,37,71,.08);
 }
 .gg-nav-inner { display: flex; align-items: center; justify-content: space-between; }
 .gg-logo-img { height: 68px; width: auto; }

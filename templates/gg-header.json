@@ -1,0 +1,37 @@
+{
+  "content": [
+    {
+      "id": "gg_hdr_s1",
+      "elType": "section",
+      "settings": {
+        "structure": "10",
+        "padding": {"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},
+        "margin": {"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},
+        "layout": "full_width",
+        "content_width": {"unit":"px","size":""},
+        "gap": "no"
+      },
+      "elements": [
+        {
+          "id": "gg_hdr_c1",
+          "elType": "column",
+          "settings": {"_column_size":100,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true}},
+          "elements": [
+            {
+              "id": "gg_hdr_w1",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<style>\n@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');\n.gg-nav{position:relative;top:0;left:0;right:0;z-index:1000;width:100%;padding:10px 0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,37,71,.08);font-family:'Inter',sans-serif;}\n.gg-nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;}\n.gg-logo-img{height:68px;width:auto;}\n.gg-nav-links{display:flex;align-items:center;gap:32px;}\n.gg-nav-links a{color:#64748b;font-size:.9rem;font-weight:500;transition:color .2s;text-decoration:none;}\n.gg-nav-links a:hover{color:#1B2547;}\n.gg-btn-sm{padding:7px 16px;font-size:.85rem;}\n.gg-btn-outline{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:#7c3aed;border:1.5px solid #e5e7eb;border-radius:50px;font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none;}\n.gg-btn-outline:hover{background:rgba(124,58,237,.12);border-color:#a78bfa;color:#1B2547;}\n.gg-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}\n.gg-hamburger span{width:22px;height:2px;background:#1B2547;border-radius:2px;}\n.gg-drawer{display:none;flex-direction:column;gap:16px;padding:24px;position:fixed;top:88px;left:0;right:0;z-index:999;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid #e5e7eb;font-family:'Inter',sans-serif;}\n.gg-drawer a{color:#374151;font-size:1.05rem;font-weight:500;text-decoration:none;}\n.gg-drawer.open{display:flex;}\n@media(max-width:768px){.gg-nav-links{display:none;}.gg-hamburger{display:flex;}}\n</style>\n<nav class=\"gg-nav\" id=\"gg-nav\">\n  <div class=\"gg-nav-inner\">\n    <a href=\"/\" aria-label=\"Home\">\n      <img src=\"/wp-content/themes/hello-elementor/goat-getter-assets/Goat Logo Horizontal.png\" alt=\"Goat Getter\" class=\"gg-logo-img\">\n    </a>\n    <div class=\"gg-nav-links\">\n      <a href=\"/#plugins\">Plugins</a>\n      <a href=\"/#why\">Why Goat Getter</a>\n      <a href=\"/#coming-soon\">Coming Soon</a>\n      <a href=\"/my-account/\" class=\"gg-btn-sm gg-btn-outline\">My Account</a>\n    </div>\n    <button class=\"gg-hamburger\" id=\"gg-hamburger\" aria-label=\"Menu\" onclick=\"document.getElementById('gg-drawer').classList.toggle('open')\">\n      <span></span><span></span><span></span>\n    </button>\n  </div>\n</nav>\n<div class=\"gg-drawer\" id=\"gg-drawer\">\n  <a href=\"/#plugins\" onclick=\"this.parentElement.classList.remove('open')\">Plugins</a>\n  <a href=\"/#why\" onclick=\"this.parentElement.classList.remove('open')\">Why Goat Getter</a>\n  <a href=\"/#coming-soon\" onclick=\"this.parentElement.classList.remove('open')\">Coming Soon</a>\n  <a href=\"/my-account/\" class=\"gg-btn-outline\" style=\"text-align:center;\">My Account</a>\n</div>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {},
+  "version": "0.4",
+  "title": "GG Header",
+  "type": "header"
+}

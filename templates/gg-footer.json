@@ -1,0 +1,37 @@
+{
+  "content": [
+    {
+      "id": "gg_ftr_s1",
+      "elType": "section",
+      "settings": {
+        "structure": "10",
+        "padding": {"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},
+        "margin": {"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},
+        "layout": "full_width",
+        "content_width": {"unit":"px","size":""},
+        "gap": "no"
+      },
+      "elements": [
+        {
+          "id": "gg_ftr_c1",
+          "elType": "column",
+          "settings": {"_column_size":100,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true}},
+          "elements": [
+            {
+              "id": "gg_ftr_w1",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<style>\n@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');\n.gg-footer{width:100%;padding:64px 0 0;background:#1B2547;color:rgba(255,255,255,.7);font-family:'Inter',sans-serif;}\n.gg-footer a{color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;}\n.gg-footer a:hover{color:#fff;}\n.gg-footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:40px;}\n.gg-footer-logo{height:30px;width:auto;margin-bottom:12px;}\n.gg-footer-brand p{font-size:.88rem;max-width:260px;color:rgba(255,255,255,.6);margin:0;}\n.gg-footer-col{display:flex;flex-direction:column;gap:10px;}\n.gg-footer-col h5{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px;font-weight:700;}\n.gg-footer-col a{font-size:.88rem;}\n.gg-footer-bottom{margin-top:48px;padding:20px 0;border-top:1px solid rgba(255,255,255,.1);}\n.gg-footer-bottom p{font-size:.82rem;text-align:center;color:rgba(255,255,255,.4);margin:0;}\n.gg-footer-bottom .gg-container{max-width:1200px;margin:0 auto;padding:0 2rem;}\n@media(max-width:768px){.gg-footer-inner{grid-template-columns:1fr 1fr;}}\n@media(max-width:480px){.gg-footer-inner{grid-template-columns:1fr;}}\n</style>\n<footer class=\"gg-footer\">\n  <div class=\"gg-footer-inner\">\n    <div class=\"gg-footer-brand\">\n      <img src=\"/wp-content/themes/hello-elementor/goat-getter-assets/Goat Logo horizontal white.png\" alt=\"Goat Getter\" class=\"gg-footer-logo\">\n      <p>Powerful plugins for the Gravity Forms ecosystem.</p>\n    </div>\n    <div class=\"gg-footer-col\">\n      <h5>Plugins</h5>\n      <a href=\"https://gravitypipeline.io\">Gravity Pipeline</a>\n    </div>\n    <div class=\"gg-footer-col\">\n      <h5>Account</h5>\n      <a href=\"/my-account/\">My Account</a>\n      <a href=\"/my-account/orders/\">Orders</a>\n      <a href=\"/my-account/downloads/\">Downloads</a>\n    </div>\n    <div class=\"gg-footer-col\">\n      <h5>Company</h5>\n      <a href=\"mailto:hello@goat-getter.com\">Contact</a>\n      <a href=\"/terms/\">Terms</a>\n      <a href=\"/privacy/\">Privacy</a>\n    </div>\n  </div>\n  <div class=\"gg-footer-bottom\">\n    <div class=\"gg-container\">\n      <p>&copy; 2026 Goat Getter. All rights reserved.</p>\n    </div>\n  </div>\n</footer>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {},
+  "version": "0.4",
+  "title": "GG Footer",
+  "type": "footer"
+}
