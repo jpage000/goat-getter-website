@@ -29,10 +29,10 @@ $t = get_template_directory_uri() . '/goat-getter-assets';
     <nav class="gg-nav" id="gg-nav">
         <div class="gg-container gg-nav-inner">
             <a href="/" class="gg-logo" aria-label="Goat Getter Home">
-                <img src="<?php echo $t; ?>/Goat Logo Horizontal.png" alt="Goat Getter" class="gg-logo-img">
+                <img src="<?php echo $t; ?>/Goat Logo Horizontal.png" alt="Goat Getter" class="gg-logo-img" width="272" height="68" data-no-lazy="1">
             </a>
             <div class="gg-nav-links">
-                <a href="#plugins">Plugins</a>
+                <a href="/shop/">Plugins</a>
                 <a href="#why">Why Goat Getter</a>
                 <a href="#coming-soon">Coming Soon</a>
                 <a href="<?php echo home_url('/my-account/'); ?>" class="gg-btn gg-btn-sm gg-btn-outline">My Account</a>
@@ -73,7 +73,7 @@ $t = get_template_directory_uri() . '/goat-getter-assets';
             </div>
             <div class="gg-hero-visual">
                 <div class="gg-hero-glow"></div>
-                <img src="<?php echo $t; ?>/hero-pipeline.png" alt="Gravity Pipeline board" class="gg-hero-screenshot" loading="eager">
+                <img src="<?php echo $t; ?>/hero-pipeline.png" alt="Gravity Pipeline board" class="gg-hero-screenshot" width="540" height="354" loading="eager" data-no-lazy="1">
             </div>
         </div>
     </section>
@@ -85,6 +85,7 @@ $t = get_template_directory_uri() . '/goat-getter-assets';
                 <div class="gg-tag">Plugin Library</div>
                 <h2>The Full Gravity Forms Toolkit</h2>
                 <p>Each plugin is designed to work on its own or together — a growing ecosystem that extends your Gravity Forms workflow.</p>
+                <a href="/shop/" class="gg-btn gg-btn-outline" style="margin-top:16px;">View All Plugins →</a>
             </div>
 
             <div class="gg-plugins-grid">
@@ -137,7 +138,55 @@ $t = get_template_directory_uri() . '/goat-getter-assets';
                         </div>
                     </div>
                     <div class="gg-plugin-actions">
-                        <a href="https://gravitypipeline.io/#pricing" class="gg-btn gg-btn-gold gg-btn-block" id="pipeline-pro-cta" target="_blank" rel="noopener">View Pro Plans</a>
+                        <a href="/product/gravity-pipeline-pro/" class="gg-btn gg-btn-gold gg-btn-block" id="pipeline-pro-cta">View Pro Plans</a>
+                    </div>
+                </div>
+
+                <!-- Gravity Chat Free -->
+                <div class="gg-plugin-card">
+                    <div class="gg-plugin-icon gg-icon-chat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.5" width="32" height="32"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    </div>
+                    <h3>Gravity Chat <span style="font-weight:500; color: var(--gg-text-dim);">Free</span></h3>
+                    <p class="gg-plugin-tagline">Real-time chat for Gravity Forms</p>
+                    <ul class="gg-plugin-features">
+                        <li>Entry-level chat threads</li>
+                        <li>Real-time messaging</li>
+                        <li>Internal team communication</li>
+                        <li>Entry activity tracking</li>
+                    </ul>
+                    <div class="gg-plugin-pricing">
+                        <div class="gg-price-free">
+                            <span class="gg-price-label">Forever Free</span>
+                            <span class="gg-price-val">$0</span>
+                        </div>
+                    </div>
+                    <div class="gg-plugin-actions">
+                        <a href="<?php echo home_url('/product/gravity-chat/'); ?>" class="gg-btn gg-btn-outline gg-btn-block" id="chat-free-cta">Download Free</a>
+                    </div>
+                </div>
+
+                <!-- Gravity Chat Pro -->
+                <div class="gg-plugin-card">
+                    <div class="gg-plugin-icon gg-icon-chat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.5" width="32" height="32"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    </div>
+                    <h3>Gravity Chat <span style="font-weight:500; color: var(--gg-purple);">Pro</span></h3>
+                    <p class="gg-plugin-tagline">Everything in Free, plus:</p>
+                    <ul class="gg-plugin-features">
+                        <li>File attachments in chat</li>
+                        <li>@mentions & notifications</li>
+                        <li>Chat search & history</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <div class="gg-plugin-pricing">
+                        <div class="gg-price-pro">
+                            <span class="gg-price-label">Starting at</span>
+                            <span class="gg-price-val">$49<small>/yr</small></span>
+                        </div>
+                    </div>
+                    <div class="gg-plugin-actions">
+                        <a href="<?php echo home_url('/product/gravity-chat-pro/'); ?>" class="gg-btn gg-btn-gold gg-btn-block" id="chat-pro-cta">View Pro Plans</a>
                     </div>
                 </div>
             </div>
@@ -203,7 +252,7 @@ $t = get_template_directory_uri() . '/goat-getter-assets';
             </div>
             <div class="gg-footer-col">
                 <h5>Plugins</h5>
-                <a href="https://gravitypipeline.io">Gravity Pipeline</a>
+                <a href="/product/gravity-pipeline-pro/">Gravity Pipeline</a>
             </div>
             <div class="gg-footer-col">
                 <h5>Account</h5>

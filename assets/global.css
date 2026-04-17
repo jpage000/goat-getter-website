@@ -27,11 +27,11 @@
     --gg-radius:     20px;
     --gg-radius-sm:  10px;
     --gg-font:       'Inter', system-ui, -apple-system, sans-serif;
-    --gg-max:        1200px;
+    --gg-max:        90%;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; height: 100%; }
 
 body {
     font-family: var(--gg-font) !important;
@@ -40,7 +40,11 @@ body {
     line-height: 1.65;
     margin: 0; padding: 0;
     -webkit-font-smoothing: antialiased;
+    display: flex; flex-direction: column; min-height: 100vh;
 }
+/* Push footer to bottom on short pages */
+.site-main, .elementor-location-single, .page-content,
+.woocommerce-page .site-main { flex: 1; }
 
 h1, h2, h3, h4, h5, h6 { color: var(--gg-heading); font-weight: 700; line-height: 1.2; font-family: var(--gg-font) !important; }
 a { color: var(--gg-purple); text-decoration: none; transition: color .2s; }
@@ -57,7 +61,7 @@ a:hover { color: var(--gg-navy); }
     max-width: var(--gg-max); margin: 0 auto; padding: 0 2rem;
     display: flex; align-items: center; justify-content: space-between;
 }
-.gg-logo-img { height: 68px; width: auto; }
+.gg-logo-img { height: 68px !important; width: auto !important; max-height: 68px !important; }
 .gg-nav-links { display: flex; align-items: center; gap: 32px; }
 .gg-nav-links a { color: var(--gg-text-dim); font-size: 0.9rem; font-weight: 500; transition: color .2s; text-decoration: none; }
 .gg-nav-links a:hover { color: var(--gg-heading); }
@@ -87,6 +91,16 @@ a:hover { color: var(--gg-navy); }
 .gg-page-content h1 {
     font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800;
     letter-spacing: -0.02em; margin-bottom: 24px;
+}
+
+/* Full-width layout for Elementor & WooCommerce pages */
+.elementor-location-single,
+.woocommerce-page .site-main,
+.woocommerce-page .page-content {
+    max-width: 90%; margin: 0 auto; padding-top: 20px;
+}
+.elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 90% !important;
 }
 
 /* ── WooCommerce Overrides ──────────────────────────────────────── */
@@ -142,6 +156,9 @@ a:hover { color: var(--gg-navy); }
 }
 .woocommerce ul.products li.product:hover {
     transform: translateY(-4px); box-shadow: var(--gg-card-hover);
+}
+.woocommerce ul.products li.product a img {
+    object-fit: contain !important;
 }
 .woocommerce ul.products li.product .woocommerce-loop-product__title {
     color: var(--gg-heading); font-family: var(--gg-font);

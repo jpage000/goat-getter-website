@@ -3,6 +3,7 @@
 # Goat Getter Website — Unit Tests
 # Validates HTML structure, CSS integrity, PHP template correctness,
 # and asset references.
+# Updated: 2026-04-17
 # ─────────────────────────────────────────────────────────────────
 set -e
 
@@ -27,12 +28,14 @@ for f in \
     "index.html" \
     "page-goat-getter-home.php" \
     "assets/style.css" \
+    "assets/global.css" \
     "assets/app.js" \
     "assets/gp-logo.svg" \
     "assets/Goat Logo Horizontal.png" \
     "assets/Goat Logo Favicon 512x512.png" \
     "assets/Goat Logo horizontal white.png" \
-    "assets/hero-pipeline.png"; do
+    "assets/hero-pipeline.png" \
+    "deploy.py"; do
     if [ -f "$ROOT_DIR/$f" ]; then
         pass "File exists: $f"
     else
@@ -95,14 +98,14 @@ done
 echo ""
 echo "▸ Plugin Card Checks"
 
-# Free card
+# Pipeline Free card
 if grep -q 'pipeline-free-cta' "$HTML"; then
     pass "Free pipeline CTA exists"
 else
     fail "Missing Free pipeline CTA"
 fi
 
-# Pro card
+# Pipeline Pro card
 if grep -q 'pipeline-pro-cta' "$HTML"; then
     pass "Pro pipeline CTA exists"
 else
@@ -123,19 +126,19 @@ else
     fail "Missing 'Most Popular' badge"
 fi
 
-# GP logo in cards (not generic SVG)
+# GP logo in cards
 GP_LOGO_COUNT=$(grep -c 'gp-logo.svg' "$HTML" || true)
 if [ "$GP_LOGO_COUNT" -ge 2 ]; then
-    pass "GP logo used in both cards ($GP_LOGO_COUNT refs)"
+    pass "GP logo used in plugin cards ($GP_LOGO_COUNT refs)"
 else
-    fail "GP logo not in both cards (found $GP_LOGO_COUNT)"
+    fail "GP logo not in plugin cards (found $GP_LOGO_COUNT)"
 fi
 
 # ── 4. Coming Soon Section ───────────────────────────────────────
 echo ""
 echo "▸ Coming Soon Checks"
 
-for plugin in "Gravity Chat" "Gravity AMS" "Gravity Reports"; do
+for plugin in "Gravity AMS" "Gravity Reports"; do
     if grep -q "$plugin" "$HTML"; then
         pass "Coming Soon: $plugin listed"
     else
@@ -143,17 +146,9 @@ for plugin in "Gravity Chat" "Gravity AMS" "Gravity Reports"; do
     fi
 done
 
-# Gravity Chat NOT in plugins section (should only be in coming-soon)
-CHAT_IN_PLUGINS=$(sed -n '/<section id="plugins"/,/<\/section>/p' "$HTML" | grep -c 'Gravity Chat' || true)
-if [ "$CHAT_IN_PLUGINS" -eq 0 ]; then
-    pass "Gravity Chat NOT in active plugins (correctly in Coming Soon)"
-else
-    fail "Gravity Chat incorrectly in active plugins section"
-fi
-
 # ── 5. CSS Checks ────────────────────────────────────────────────
 echo ""
-echo "▸ CSS Checks"
+echo "▸ CSS Checks (style.css)"
 
 CSS="$ROOT_DIR/assets/style.css"
 
@@ -192,7 +187,101 @@ else
     fail "Plugin cards missing flex column"
 fi
 
-# ── 6. PHP Template Checks ────────────────────────────────────────
+# Plugin grid uses auto-fit for responsive layout
+if grep -q 'repeat(auto-fit' "$CSS"; then
+    pass "Plugin grid uses auto-fit layout"
+else
+    fail "Plugin grid missing auto-fit"
+fi
+
+# ── 6. Global CSS Checks ─────────────────────────────────────────
+echo ""
+echo "▸ CSS Checks (global.css)"
+
+GCSS="$ROOT_DIR/assets/global.css"
+
+# Design tokens
+if grep -q '\-\-gg-navy:' "$GCSS"; then
+    pass "Has --gg-navy design token"
+else
+    fail "Missing --gg-navy design token"
+fi
+
+if grep -q '\-\-gg-purple:' "$GCSS"; then
+    pass "Has --gg-purple design token"
+else
+    fail "Missing --gg-purple design token"
+fi
+
+# Full-width layout (90%)
+if grep -q '\-\-gg-max:.*90%' "$GCSS"; then
+    pass "Layout uses 90% max-width"
+else
+    fail "Layout not using 90% max-width"
+fi
+
+# Sticky footer (flexbox)
+if grep -q 'min-height: 100vh' "$GCSS"; then
+    pass "Sticky footer: body has min-height 100vh"
+else
+    fail "Missing sticky footer min-height"
+fi
+
+if grep -q 'flex-direction: column' "$GCSS"; then
+    pass "Sticky footer: body uses flex column"
+else
+    fail "Missing sticky footer flex column"
+fi
+
+if grep -q 'flex: 1' "$GCSS"; then
+    pass "Sticky footer: main content uses flex: 1"
+else
+    fail "Missing flex: 1 on main content"
+fi
+
+# WooCommerce product card styling
+if grep -q 'woocommerce ul.products li.product' "$GCSS"; then
+    pass "WooCommerce product card styles defined"
+else
+    fail "Missing WooCommerce product card styles"
+fi
+
+# Product card borders
+if grep -q 'border: 1px solid var(--gg-border)' "$GCSS"; then
+    pass "Product cards have borders"
+else
+    fail "Product cards missing borders"
+fi
+
+# Product card hover effect
+if grep -q 'translateY(-4px)' "$GCSS"; then
+    pass "Product cards have hover lift effect"
+else
+    fail "Product cards missing hover effect"
+fi
+
+# Image contain for product thumbnails
+if grep -q 'object-fit: contain' "$GCSS"; then
+    pass "Product images use object-fit: contain"
+else
+    fail "Product images missing object-fit: contain"
+fi
+
+# Elementor section boxed override to 90%
+if grep -q 'elementor-section-boxed' "$GCSS"; then
+    pass "Elementor boxed sections overridden to 90%"
+else
+    fail "Missing Elementor boxed section override"
+fi
+
+# My Account styling
+if grep -q 'woocommerce-MyAccount' "$GCSS"; then
+    pass "My Account page styles defined"
+else
+    fail "Missing My Account styles"
+fi
+
+# ── 7. PHP Template Checks ────────────────────────────────────────
 echo ""
 echo "▸ PHP Template Checks"
 
@@ -249,7 +338,56 @@ for section in "plugins" "why" "coming-soon"; do
     fi
 done
 
-# ── 7. JavaScript Checks ─────────────────────────────────────────
+# Plugins nav link goes to /shop/
+if grep -q 'href="/shop/">Plugins' "$PHP"; then
+    pass "PHP Plugins nav links to /shop/"
+else
+    fail "PHP Plugins nav not linking to /shop/"
+fi
+
+# No gravitypipeline.io links (should be internal)
+GP_LINKS=$(grep -c 'gravitypipeline.io' "$PHP" || true)
+if [ "$GP_LINKS" -eq 0 ]; then
+    pass "PHP has no gravitypipeline.io links (all internal)"
+else
+    fail "PHP still has $GP_LINKS gravitypipeline.io links"
+fi
+
+# Gravity Chat cards in Plugin Library
+if grep -q 'chat-free-cta' "$PHP"; then
+    pass "PHP has Gravity Chat Free card"
+else
+    fail "PHP missing Gravity Chat Free card"
+fi
+
+if grep -q 'chat-pro-cta' "$PHP"; then
+    pass "PHP has Gravity Chat Pro card"
+else
+    fail "PHP missing Gravity Chat Pro card"
+fi
+
+# View All Plugins link
+if grep -q 'View All Plugins' "$PHP"; then
+    pass "PHP has 'View All Plugins' link to shop"
+else
+    fail "PHP missing 'View All Plugins' link"
+fi
+
+# Hero image has explicit dimensions
+if grep -q 'width="540" height="354"' "$PHP"; then
+    pass "Hero image has explicit width/height attributes"
+else
+    fail "Hero image missing explicit dimensions"
+fi
+
+# Hero image has data-no-lazy
+if grep -q 'data-no-lazy="1"' "$PHP"; then
+    pass "Hero image has data-no-lazy attribute"
+else
+    fail "Hero image missing data-no-lazy"
+fi
+
+# ── 8. JavaScript Checks ─────────────────────────────────────────
 echo ""
 echo "▸ JavaScript Checks"
 
@@ -267,7 +405,7 @@ else
     fail "JS missing mobile menu handler"
 fi
 
-# ── 8. HTML ↔ PHP Parity ─────────────────────────────────────────
+# ── 9. HTML ↔ PHP Parity ─────────────────────────────────────────
 echo ""
 echo "▸ HTML ↔ PHP Sync Checks"
 
@@ -291,13 +429,37 @@ else
     fail "Gold button mismatch: HTML=$HTML_GOLD, PHP=$PHP_GOLD"
 fi
 
-# Both should have same number of Coming Soon cards
+# Both should have Coming Soon cards
 HTML_COMING=$(grep -c 'gg-coming-card' "$HTML" || true)
 PHP_COMING=$(grep -c 'gg-coming-card' "$PHP" || true)
 if [ "$HTML_COMING" -eq "$PHP_COMING" ]; then
     pass "Coming Soon card count matches ($HTML_COMING)"
 else
     fail "Coming Soon mismatch: HTML=$HTML_COMING, PHP=$PHP_COMING"
+fi
+
+# ── 10. Deploy Script Checks ─────────────────────────────────────
+echo ""
+echo "▸ Deploy Script Checks"
+
+DEPLOY="$ROOT_DIR/deploy.py"
+
+if grep -q 'paramiko' "$DEPLOY"; then
+    pass "Deploy uses paramiko for SFTP"
+else
+    fail "Deploy not using paramiko"
+fi
+
+if grep -q 'goat-getter.com' "$DEPLOY"; then
+    pass "Deploy targets goat-getter.com"
+else
+    fail "Deploy not targeting goat-getter.com"
+fi
+
+if grep -q 'hello-elementor' "$DEPLOY"; then
+    pass "Deploy targets hello-elementor theme"
+else
+    fail "Deploy not targeting hello-elementor theme"
 fi
 
 # ── Results ───────────────────────────────────────────────────────
